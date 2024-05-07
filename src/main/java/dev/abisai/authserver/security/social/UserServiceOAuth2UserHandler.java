@@ -1,4 +1,4 @@
-package dev.abisai.authserver.config.security.social;
+package dev.abisai.authserver.security.social;
 
 import dev.abisai.authserver.model.Role;
 import dev.abisai.authserver.model.User;

@@ -1,4 +1,4 @@
-package dev.abisai.authserver.config.security;
+package dev.abisai.authserver.security;
 
 import dev.abisai.authserver.model.User;
 import org.springframework.security.core.GrantedAuthority;

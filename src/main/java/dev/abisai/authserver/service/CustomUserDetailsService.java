@@ -1,7 +1,7 @@
 package dev.abisai.authserver.service;
 
 
-import dev.abisai.authserver.config.security.CustomUserDetails;
+import dev.abisai.authserver.security.CustomUserDetails;
 import dev.abisai.authserver.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

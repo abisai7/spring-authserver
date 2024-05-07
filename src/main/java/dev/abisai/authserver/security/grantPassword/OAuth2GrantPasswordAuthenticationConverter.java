@@ -1,5 +1,6 @@
-package dev.abisai.authserver.config.security.grantPassword;
+package dev.abisai.authserver.security.grantPassword;
 
+import dev.abisai.authserver.security.AuthorizationGrantTypePassword;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.Authentication;
@@ -18,8 +19,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static dev.abisai.authserver.config.security.AuthorizationGrantTypePassword.GRANT_PASSWORD;
-
 public class OAuth2GrantPasswordAuthenticationConverter implements AuthenticationConverter {
 
     @Nullable
@@ -28,7 +27,7 @@ public class OAuth2GrantPasswordAuthenticationConverter implements Authenticatio
 
         String grantType = request.getParameter(OAuth2ParameterNames.GRANT_TYPE);
 
-        if (!GRANT_PASSWORD.getValue().equals(grantType)) {
+        if (!AuthorizationGrantTypePassword.GRANT_PASSWORD.getValue().equals(grantType)) {
             return null;
         }
 

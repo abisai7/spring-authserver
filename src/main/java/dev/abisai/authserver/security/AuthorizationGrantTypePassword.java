@@ -1,4 +1,4 @@
-package dev.abisai.authserver.config.security;
+package dev.abisai.authserver.security;
 
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 

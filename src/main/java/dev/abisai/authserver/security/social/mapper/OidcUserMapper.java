@@ -1,4 +1,4 @@
-package dev.abisai.authserver.config.security.social.mapper;
+package dev.abisai.authserver.security.social.mapper;
 
 import dev.abisai.authserver.model.User;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
