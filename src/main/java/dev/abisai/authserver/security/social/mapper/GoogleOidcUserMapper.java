@@ -1,6 +1,6 @@
-package dev.abisai.authserver.config.security.social.mapper;
+package dev.abisai.authserver.security.social.mapper;
 
-import dev.abisai.authserver.config.security.social.CustomOidcUser;
+import dev.abisai.authserver.security.social.CustomOidcUser;
 import dev.abisai.authserver.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,4 +1,4 @@
-package dev.abisai.authserver.config.security;
+package dev.abisai.authserver.config;
 
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;

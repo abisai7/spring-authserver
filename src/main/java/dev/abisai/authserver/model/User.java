@@ -2,7 +2,6 @@ package dev.abisai.authserver.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nimbusds.oauth2.sdk.TokenIntrospectionSuccessResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

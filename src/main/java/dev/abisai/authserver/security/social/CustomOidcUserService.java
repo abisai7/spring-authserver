@@ -1,6 +1,6 @@
-package dev.abisai.authserver.config.security.social;
+package dev.abisai.authserver.security.social;
 
-import dev.abisai.authserver.config.security.social.mapper.OidcUserMapper;
+import dev.abisai.authserver.security.social.mapper.OidcUserMapper;
 import dev.abisai.authserver.model.User;
 import dev.abisai.authserver.service.UserService;
 import lombok.RequiredArgsConstructor;

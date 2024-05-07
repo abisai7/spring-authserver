@@ -1,12 +1,15 @@
-package dev.abisai.authserver.config.security;
+package dev.abisai.authserver.config;
 
-import dev.abisai.authserver.config.security.social.SocialLoginAuthenticationSuccessHandler;
-import dev.abisai.authserver.config.security.social.UserServiceOAuth2UserHandler;
+import dev.abisai.authserver.security.social.SocialLoginAuthenticationSuccessHandler;
+import dev.abisai.authserver.security.social.UserServiceOAuth2UserHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -25,14 +28,13 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .anyRequest().authenticated()
-//                                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                 )
                 .formLogin(withDefaults())
                 .oauth2Login(oauth ->
                         oauth
                                 .successHandler(authenticationSuccessHandler)
                 )
-                .logout((logout) -> logout.permitAll())
+                .logout(LogoutConfigurer::permitAll)
                 .build();
     }
 

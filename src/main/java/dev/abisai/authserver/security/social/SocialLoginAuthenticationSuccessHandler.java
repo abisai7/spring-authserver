@@ -1,4 +1,4 @@
-package dev.abisai.authserver.config.security.social;
+package dev.abisai.authserver.security.social;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

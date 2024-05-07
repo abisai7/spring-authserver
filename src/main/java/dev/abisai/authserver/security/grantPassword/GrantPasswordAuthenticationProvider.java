@@ -1,6 +1,7 @@
-package dev.abisai.authserver.config.security.grantPassword;
+package dev.abisai.authserver.security.grantPassword;
 
-import dev.abisai.authserver.config.security.CustomUserDetails;
+import dev.abisai.authserver.security.CustomUserDetails;
+import dev.abisai.authserver.security.AuthorizationGrantTypePassword;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -25,8 +26,6 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 import org.springframework.util.Assert;
 
 import java.security.Principal;
-
-import static dev.abisai.authserver.config.security.AuthorizationGrantTypePassword.GRANT_PASSWORD;
 
 
 public class GrantPasswordAuthenticationProvider implements AuthenticationProvider {
@@ -70,7 +69,7 @@ public class GrantPasswordAuthenticationProvider implements AuthenticationProvid
         }
 
         // Ensure the client is configured to use this authorization grant type
-        if (registeredClient == null || !registeredClient.getAuthorizationGrantTypes().contains(GRANT_PASSWORD)) {
+        if (registeredClient == null || !registeredClient.getAuthorizationGrantTypes().contains(AuthorizationGrantTypePassword.GRANT_PASSWORD)) {
             throw new OAuth2AuthenticationException(OAuth2ErrorCodes.UNAUTHORIZED_CLIENT);
         }
 
@@ -107,7 +106,7 @@ public class GrantPasswordAuthenticationProvider implements AuthenticationProvid
                         AuthorizationServerContextHolder.getContext()
                 )
                 .authorizedScopes(registeredClient.getScopes())
-                .authorizationGrantType(GRANT_PASSWORD)
+                .authorizationGrantType(AuthorizationGrantTypePassword.GRANT_PASSWORD)
                 .authorizationGrant(customPasswordAuthenticationToken);
 
         // Generate the access token
@@ -140,7 +139,7 @@ public class GrantPasswordAuthenticationProvider implements AuthenticationProvid
         OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.withRegisteredClient(registeredClient)
                 .attribute(Principal.class.getName(), clientPrincipal)
                 .principalName(clientPrincipal.getName())
-                .authorizationGrantType(GRANT_PASSWORD)
+                .authorizationGrantType(AuthorizationGrantTypePassword.GRANT_PASSWORD)
                 .authorizedScopes(registeredClient.getScopes());
 
         if (generatedAccessToken instanceof ClaimAccessor) {

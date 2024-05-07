@@ -1,5 +1,6 @@
-package dev.abisai.authserver.config.security.grantPassword;
+package dev.abisai.authserver.security.grantPassword;
 
+import dev.abisai.authserver.security.AuthorizationGrantTypePassword;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationGrantAuthenticationToken;
@@ -9,8 +10,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import static dev.abisai.authserver.config.security.AuthorizationGrantTypePassword.GRANT_PASSWORD;
 
 
 public class GrantPasswordAuthenticationToken extends OAuth2AuthorizationGrantAuthenticationToken {
@@ -27,7 +26,7 @@ public class GrantPasswordAuthenticationToken extends OAuth2AuthorizationGrantAu
             @Nullable Set<String> scopes,
             @Nullable Map<String, Object> additionalParameters
     ) {
-        super(GRANT_PASSWORD, clientPrincipal, additionalParameters);
+        super(AuthorizationGrantTypePassword.GRANT_PASSWORD, clientPrincipal, additionalParameters);
         Assert.hasText(username, "username cannot be empty");
         Assert.hasText(password, "password cannot be empty");
         this.username = username;

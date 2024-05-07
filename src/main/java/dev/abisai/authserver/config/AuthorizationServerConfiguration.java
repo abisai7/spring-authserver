@@ -1,7 +1,8 @@
-package dev.abisai.authserver.config.security;
+package dev.abisai.authserver.config;
 
-import dev.abisai.authserver.config.security.grantPassword.GrantPasswordAuthenticationProvider;
-import dev.abisai.authserver.config.security.grantPassword.OAuth2GrantPasswordAuthenticationConverter;
+import dev.abisai.authserver.security.AuthorizationGrantTypePassword;
+import dev.abisai.authserver.security.grantPassword.GrantPasswordAuthenticationProvider;
+import dev.abisai.authserver.security.grantPassword.OAuth2GrantPasswordAuthenticationConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
