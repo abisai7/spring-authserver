@@ -21,6 +21,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfiguration {
 
     @Bean
+    @Order(1)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http,
                                                           AuthenticationSuccessHandler authenticationSuccessHandler
     ) throws Exception {
@@ -39,6 +40,26 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    @Order(2)
+    public SecurityFilterChain defaultSecurityFilterChainResource(HttpSecurity http) throws Exception {
+        http.securityMatcher("/api/**")
+                .authorizeHttpRequests((authorize) ->
+                        authorize
+                                .anyRequest().authenticated()
+                )
+                .oauth2ResourceServer(
+                        auth -> auth
+                                .opaqueToken(
+                                        opaqueTokenConfigurer -> opaqueTokenConfigurer
+                                                .introspectionUri("http://localhost:8081/oauth2/introspect")
+                                                .introspectionClientCredentials("demo-client", "demo-secret")
+                                )
+                )
+                .formLogin(Customizer.withDefaults());
+        return http.build();
+    }
+
+    @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/h2-console/**"));
     }
@@ -51,18 +72,4 @@ public class SecurityConfiguration {
         return authenticationSuccessHandler;
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user = User.builder()
-//                .username("admin")
-//
-//                // {noop} means "no operation," i.e., a raw password without any encoding applied.
-//                .password("{noop}secret")
-//
-//                .roles("ADMIN")
-//                .authorities("ARTICLE_READ", "ARTICLE_WRITE")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
 }
