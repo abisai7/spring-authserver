@@ -1,0 +1,87 @@
+{
+  "v": 2,
+  "name": "autserver",
+  "folders": [],
+  "requests": [
+    {
+      "v": "4",
+      "endpoint": "http://127.0.0.1:8081/oauth2/token",
+      "name": "Create Token",
+      "params": [],
+      "headers": [],
+      "method": "POST",
+      "auth": {
+        "authType": "basic",
+        "authActive": true,
+        "username": "demo-client",
+        "password": "demo-secret"
+      },
+      "preRequestScript": "",
+      "testScript": "",
+      "body": {
+        "contentType": "application/x-www-form-urlencoded",
+        "body": "username: admin\npassword: secret\ngrant_type: grant_password"
+      },
+      "requestVariables": []
+    },
+    {
+      "v": "4",
+      "endpoint": "http://127.0.0.1:8081/oauth2/introspect",
+      "name": "Introspect Token",
+      "params": [],
+      "headers": [],
+      "method": "POST",
+      "auth": {
+        "authType": "basic",
+        "authActive": true,
+        "username": "demo-client",
+        "password": "demo-secret",
+        "addTo": "HEADERS",
+        "grantTypeInfo": {
+          "authEndpoint": "",
+          "clientID": "",
+          "clientSecret": "",
+          "username": "",
+          "password": "",
+          "tokenEndpoint": "",
+          "isPKCE": false,
+          "codeVerifierMethod": "S256",
+          "grantType": "PASSWORD",
+          "token": ""
+        }
+      },
+      "preRequestScript": "",
+      "testScript": "",
+      "body": {
+        "contentType": "application/x-www-form-urlencoded",
+        "body": "token: 7NLhRVQgG2KloX13CV5F1BZoamXH2q8aEG1dTuwsZIYARU0l-yfWKj6bytovjXvVsvOBIvvbvZyLd-cTHemxcs7-iJ0R87DM-ObuKXI6puz_f8CP1RR7b0QoO_uL3Wmg"
+      },
+      "requestVariables": []
+    },
+    {
+      "v": "4",
+      "endpoint": "http://localhost:8081/foo",
+      "name": "Get",
+      "params": [],
+      "headers": [],
+      "method": "GET",
+      "auth": {
+        "authType": "bearer",
+        "authActive": true,
+        "token": "wX4_UYBYoF8dBW-UNp1H-gY8X3P6bK4dg897TB0QrltgRMA5DsLuetcFNMGkxtEFiquISIeA2sDdWPHMJabN_qKNzdz3Ga3SGWes9brDvSvPMMgOF7A7wTKm06uzzFmP"
+      },
+      "preRequestScript": "",
+      "testScript": "",
+      "body": {
+        "contentType": null,
+        "body": null
+      },
+      "requestVariables": []
+    }
+  ],
+  "auth": {
+    "authType": "none",
+    "authActive": true
+  },
+  "headers": []
+}
