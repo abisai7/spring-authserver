@@ -23,9 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
-
-
-//@Service
+@Service
 public class JpaRegisteredClientRepository implements RegisteredClientRepository {
 
     private final ClientRepository clientRepository;
@@ -35,10 +33,10 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
         Assert.notNull(clientRepository, "clientRepository cannot be null");
         this.clientRepository = clientRepository;
 
-//        ClassLoader classLoader = JpaRegisteredClientRepository.class.getClassLoader();
-//        List<Module> securityModules = SecurityJackson2Modules.getModules(classLoader);
-//        this.objectMapper.registerModules(securityModules);
-//        this.objectMapper.registerModule(new OAuth2AuthorizationServerJackson2Module());
+        ClassLoader classLoader = JpaRegisteredClientRepository.class.getClassLoader();
+        List<Module> securityModules = SecurityJackson2Modules.getModules(classLoader);
+        this.objectMapper.registerModules(securityModules);
+        this.objectMapper.registerModule(new OAuth2AuthorizationServerJackson2Module());
     }
 
     @Override
